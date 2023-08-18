@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { Grid, Typography } from "@mui/material";
+import Calculator from "./Components/Calculator";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Grid container spacing={2} alignItems="center" justifyContent="center">
+      <Grid item xs={12} sx={{ textAlign: "center" }}>
+        <Typography sx={{ fontSize: 40 }}>Calculator</Typography>
+      </Grid>
+      <Grid item xs={11} sm={8} m={2} lg={2} sx={{ justifyContent: "center" }}>
+        <Calculator />
+      </Grid>
+    </Grid>
   );
-}
+};
 
 export default App;
