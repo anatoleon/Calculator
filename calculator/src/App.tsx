@@ -9,7 +9,7 @@ const App = () => {
       <Grid item xs={12} sx={{ textAlign: "center" }}>
         <Typography sx={{ fontSize: 40 }}>Calculator</Typography>
       </Grid>
-      <Grid item xs={11} sm={8} m={2} lg={2} sx={{ justifyContent: "center" }}>
+      <Grid item xs={12} sm={8} m={6} lg={4} sx={{ justifyContent: "center" }}>
         <Calculator />
       </Grid>
     </Grid>

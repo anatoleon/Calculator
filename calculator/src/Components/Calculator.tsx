@@ -1,27 +1,24 @@
 import React from "react";
-import { Box } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import Display from "./Display";
 import Button from "./Button";
+import { buttonOrder } from "../helpers/helpers";
 
 const Calculator = () => {
   return (
-    <Box sx={{ width: "100%", backgroundColor: "black" }}>
+    <Box
+      sx={{
+        backgroundColor: "black",
+        borderRadius: 2,
+        padding: 2,
+      }}
+    >
       <Display />
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "row",
-          flexWrap: "wrap",
-          justifyContent: "space-between",
-        }}
-      >
-        {[...Array(10).keys()].map((key) => (
-          <Button symbol={String(key)} />
-        ))}
-      </Box>
-      {["+", "-", "*", "/", "="].map((key) => (
-        <Button symbol={String(key)} />
-      ))}
+      <Grid container spacing={1}>
+        {buttonOrder.map((row) =>
+          row.map((key) => <Button symbol={String(key)} />)
+        )}
+      </Grid>
     </Box>
   );
 };
