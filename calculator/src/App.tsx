@@ -1,9 +1,9 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import "./App.css";
 import { Grid, Typography } from "@mui/material";
 import Calculator from "./Components/Calculator";
 
-const App = () => {
+const App = (): ReactElement => {
   return (
     <Grid container spacing={2} alignItems="center" justifyContent="center">
       <Grid item xs={12} sx={{ textAlign: "center" }}>
