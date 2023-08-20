@@ -12,7 +12,8 @@ Limitations:
 
 - The decimal functionality works but is a little wonky. There probably should be a special case for the period.
 - The number you are writing can go past the screen edges. Avoid very long numbers.
-- Writing two operations back-to-back will overwrite the first operation. I suppose this behavior is undefined, but on other calculators if you, say do a \*=, you'll get a square.
+- Writing two operations back-to-back will overwrite the first operation. I suppose this behavior is undefined, but on other calculators if you, say, do a \*=, you'll get a square.
 
 Enjoy -- math is fun!
+
 Anatole
