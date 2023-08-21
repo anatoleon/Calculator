@@ -16,4 +16,6 @@ Limitations:
 
 Enjoy -- math is fun!
 
+The file App.tsx may be a good place to start looking at the project, since it's the root of my component tree. The other interesting files are Button.tsx, Calculator.tsx, Display.tsx, and helpers.tsx.
+
 Anatole
