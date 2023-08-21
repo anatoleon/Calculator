@@ -1,12 +1,16 @@
 import React, { ReactElement, useEffect, useState } from "react";
 import { Box, Typography } from "@mui/material";
 import { evaluate, max } from "mathjs";
+import { errorString } from "../helpers/helpers";
 
 interface DisplayProps {
   total: string;
 }
 
 const calculateDisplay = (total: string): string | null => {
+  if (total === errorString) {
+    return total;
+  }
   if (isNaN(Number(total.charAt(total.length - 1)))) {
     const slice: string = total.slice(0, total.length - 1);
     const secondTolastSymbolIndex: number = max(
@@ -19,7 +23,11 @@ const calculateDisplay = (total: string): string | null => {
       total.charAt(secondTolastSymbolIndex) === "*" ||
       total.charAt(secondTolastSymbolIndex) === "/"
     ) {
-      return evaluate(total.substring(0, total.length - 1));
+      try {
+        return evaluate(total.substring(0, total.length - 1));
+      } catch {
+        return errorString;
+      }
     }
   } else {
     const lastSymbolIndex: number = max(
@@ -33,15 +41,15 @@ const calculateDisplay = (total: string): string | null => {
   return null;
 };
 
-const Display = (props: DisplayProps): ReactElement => {
+const Display: React.FC<DisplayProps> = ({ total }): ReactElement => {
   const [displayNumber, setDisplayNumber] = useState("0");
 
   useEffect(() => {
-    const newDisplay: string | null = calculateDisplay(props.total);
+    const newDisplay = calculateDisplay(total);
     if (newDisplay) {
       setDisplayNumber(newDisplay);
     }
-  }, [props.total]);
+  }, [total]);
   return (
     <Box
       sx={{

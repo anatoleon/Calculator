@@ -2,14 +2,14 @@ import React, { ReactElement, useState } from "react";
 import { Box, Grid } from "@mui/material";
 import Display from "./Display";
 import Button from "./Button";
-import { buttonOrder } from "../helpers/helpers";
+import { buttonOrder, errorString } from "../helpers/helpers";
 import { evaluate } from "mathjs";
 
-const Calculator = (): ReactElement => {
-  const [total, setTotal] = useState("0");
+const Calculator: React.FC = (): ReactElement => {
+  const [total, setTotal] = useState<string>("0");
 
   const onAddSymbol = (symbol: string) => {
-    if (total === "0" && !isNaN(Number(symbol))) {
+    if ((total === "0" && !isNaN(Number(symbol))) || total === errorString) {
       setTotal(symbol);
       return;
     }
@@ -20,7 +20,11 @@ const Calculator = (): ReactElement => {
       }
     }
     if (symbol === "=") {
-      setTotal(String(evaluate(runningTotal)));
+      try {
+        setTotal(String(evaluate(runningTotal)));
+      } catch {
+        setTotal(errorString);
+      }
       return;
     }
     setTotal(runningTotal + symbol);
@@ -42,11 +46,11 @@ const Calculator = (): ReactElement => {
       <Grid container spacing={1}>
         {buttonOrder.map((row) =>
           row.map((key) => (
-            <Grid item xs={3} sx={{ textAlign: "center" }} key={String(key)}>
+            <Grid item xs={3} sx={{ textAlign: "center" }} key={key}>
               <Button
-                symbol={String(key)}
-                onClick={() => onAddSymbol(String(key))}
-                selected={total.charAt(total.length - 1) === String(key)}
+                symbol={key}
+                onClick={() => onAddSymbol(key)}
+                selected={total.charAt(total.length - 1) === key}
               />
             </Grid>
           ))

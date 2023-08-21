@@ -17,19 +17,23 @@ const getBackgroundColor = (
   return "purple";
 };
 
-const Button = (props: ButtonProps): ReactElement => {
+const Button: React.FC<ButtonProps> = ({
+  symbol,
+  onClick,
+  selected,
+}): ReactElement => {
   return (
     <ButtonBase
       sx={{
-        backgroundColor: getBackgroundColor(props.symbol, props.selected),
+        backgroundColor: getBackgroundColor(symbol, selected),
         borderRadius: 2,
         width: "100%",
         height: 80,
       }}
-      onClick={props.onClick}
+      onClick={onClick}
     >
       <Typography color={"white"} fontSize={30}>
-        {props.symbol}
+        {symbol}
       </Typography>
     </ButtonBase>
   );

@@ -2,7 +2,7 @@ Welcome to Calculator!
 
 Firstly, you'll have to CD into the /calculator folder because npx create-react-app created a new folder inside the folder I already built. Whoops.
 
-Once there, you can follow that auto-generated README to start using the app, or you can just npm start to get going.
+Once there, you can follow that auto-generated README to start using the app, or you can just npm install and then npm start to get going.
 
 There are no tests. Please don't npm test; it'll be dissapointing.
 
